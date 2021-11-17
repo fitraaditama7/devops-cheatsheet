@@ -1,0 +1,35 @@
+Host gateway
+    HostName 10.0.0.154
+    User housy
+
+Host frontend1
+    HostName 10.0.1.79
+    User housy
+
+Host frontend2
+    HostName 10.0.1.47
+    User housy
+
+Host backend
+    HostName 10.0.1.72
+    User housy
+
+Host database1
+    HostName 10.0.1.6
+    User housy
+
+Host database2
+    HostName 10.0.1.148
+    User housy
+
+Host monitor
+    HostName 10.0.1.241
+    User housy
+
+Host jenkins
+    HostName 10.0.1.231
+    User housy
+
+Host public
+    HostName 10.0.0.72
+    User housy

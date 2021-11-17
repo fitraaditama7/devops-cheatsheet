@@ -1,0 +1,27 @@
+---
+- name: Install NGINX
+  hosts: all
+  become: true
+  tasks:
+    - name: ensure nginx is at the latest version
+      apt: name=nginx state=latest
+
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+
+    - name: Copy config
+      copy:
+        src: "{{ item }}"
+        dest: "/etc/nginx/sites-enabled/"
+      with_items:
+      - "~/ansible/nginx/frontend.conf"
+      - "~/ansible/nginx/backend.conf"
+      - "~/ansible/nginx/monitor.conf"
+      - "~/ansible/nginx/jenkins.conf"
+
+    - name: Restart NGINX
+      command: service nginx restart
+
+...

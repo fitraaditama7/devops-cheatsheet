@@ -1,0 +1,20 @@
+---
+- name: Install Backend
+  hosts: monitor
+  tasks:
+    - name: mkdir docker
+      file:
+        path: /home/ubuntu/prometheus
+        state: directory
+
+    - name: copy prometheus conf
+      copy:
+        src: /home/housy/ansible/prometheus/prometheus.yml
+        dest: /home/housy/prometheus/prometheus.yml
+
+    - name: run prometheus
+      command: docker run --restart=always --name prometheus -p 9090:9090 -d -v /home/housy/prometheus:/etc/prometheus prom/prometheus
+
+    - name: run grafana
+      command: docker run --restart=always --name grafana -d -p 3000:3000 grafana/grafana
+...

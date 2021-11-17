@@ -1,0 +1,12 @@
+---
+- name: Install Jenkins
+  hosts: all
+  tasks:
+    - name: Copy docker-compose
+      copy:
+        src: /home/housy/ansible/docker_compose/jenkins.yml
+        dest: /home/housy/docker-compose.yml
+    - name: Create Jenkins
+      command: docker-compose up -d
+
+...

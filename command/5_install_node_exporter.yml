@@ -1,0 +1,7 @@
+---
+- name: Install Node Exporter
+  hosts: all
+  tasks:
+    - name: Install Node Exporter
+      command: docker run --restart=always  -p 9100:9100 -d prom/node-exporter
+...

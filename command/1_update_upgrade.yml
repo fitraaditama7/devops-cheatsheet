@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install aptitude using aptitude
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+      
+    - name: Update All packages
+      apt:
+        update_cache: yes
+    
+    - name: Upgrade packages
+      apt:
+        upgrade: yes

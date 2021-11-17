@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: create .ssh
+    file:
+      path: /home/housy/.ssh
+      state: directory
+      
+  - name: Copy Private Key
+    copy:
+      src: /home/housy/.ssh/id_rsa
+      dest: /home/housy/.ssh/id_rsa
+
+  - name: authorized_keys
+    copy:
+      src: /home/housy/.ssh/id_rsa.pub
+      dest: /home/housy/.ssh/authorized_keys

@@ -1,0 +1,30 @@
+---
+- name: Create New Users
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Create User
+      user:
+        name: "{{ item }}"
+        state: present
+        password: "{{ default_user_password }}"
+        shell: /bin/bash
+        groups: sudo,docker
+        createhome: yes
+        home: /home/housy
+      loop:
+        - housy
+        
+- hosts: all
+  become: true
+  tasks:
+    - name: Change Password Authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: 'PasswordAuthentication no'
+        line: PasswordAuthentication yes
+    
+    - name: Reload SSHD
+      command: service sshd restart
+...

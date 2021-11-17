@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  frontend:
+    image: abrohah7/housy-frontend
+    restart: always
+    ports:
+      - 3000:80
+  
+  frontend-2:
+    image: abrohah7/housy-frontend
+    restart: always
+    ports:
+      - 3001:80

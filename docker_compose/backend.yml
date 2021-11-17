@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  backend:
+    image: abrohah7/backend
+    ports:
+      - 5000:5000
+    restart: always

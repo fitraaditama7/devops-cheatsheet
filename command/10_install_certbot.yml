@@ -1,0 +1,22 @@
+---
+- name: Install Certbot
+  hosts: public
+  become: true
+
+  tasks:
+    - name: Install Snapd
+      apt:
+        name: snapd
+        state: latest
+
+    - name: check snapd up to date
+      command: sudo snap install core; sudo snap refresh core
+    
+    - name: Install Certbot
+      command: sudo snap install --classic certbot
+
+    - name: Prepare Certbot
+      command: sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+    - name: Generate Certbot
+      command: sudo cerbot --nginx --noninteractive --agree-tos -m fitraaditama7@gmail.com 
